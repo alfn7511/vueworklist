@@ -1,35 +1,39 @@
-// https://eslint.org/docs/user-guide/configuring
-
+// .eslintrc.js
 module.exports = {
+  // 현재 eslintrc 파일을 기준으로 ESLint 규칙을 적용
   root: true,
-  parserOptions: {
-    parser: 'babel-eslint',
-    parserOptions: {
-      sourceType: 'module'
-    }
-  },
+  // 추가적인 규칙들을 적용
   env: {
-    browser: true,
+    "node": true
+  },
+  parserOptions: {
+    "parser": "babel-eslint"
   },
   extends: [
     'eslint:recommended',
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential', 
-    // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    'standard'
+    'plugin:vue/essential',
+    'prettier',
+    'plugin:prettier/recommended',
   ],
-  // required to lint *.vue files
-  plugins: [
-    'html',
-    'standard',
-    'vue'
-  ],
-  // add your custom rules here
+  // 코드 정리 플러그인 추가
+  plugins: ['prettier'],
+  // 사용자 편의 규칙 추가
   rules: {
-    // allow async-await
-    'generator-star-spacing': 'off',
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
-  }
-}
+    'prettier/prettier': [
+      'error',
+      // 아래 규칙들은 개인 선호에 따라 prettier 문법 적용
+      // https://prettier.io/docs/en/options.html
+      {
+        singleQuote: true,
+        semi: true,
+        useTabs: true,
+        tabWidth: 2,
+        trailingComma: 'all',
+        printWidth: 80,
+        bracketSpacing: true,
+        arrowParens: 'avoid',
+      },
+    ],
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+  },
+};
