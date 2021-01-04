@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Main from '@/view/main';
-import Worklist from '@/worklist/index';
 
 Vue.use(Router);
 
@@ -10,12 +8,27 @@ export default new Router({
 		{
 			path: '/',
 			name: 'Worklist',
-			component: Worklist,
+			component: () => import('@/worklist/index'),
+		},
+		{
+			path: '/guide',
+			name: 'GuideIndex',
+			component: () => import('@/worklist/guide'),
+		},
+		{
+			path: '/guide/basic',
+			name: 'GuideBasic',
+			component: () => import('@/worklist/guide/basic'),
+		},
+		{
+			path: '/rules',
+			name: 'GuideRules',
+			component: () => import('@/worklist/rules'),
 		},
 		{
 			path: '/main',
 			name: 'Main',
-			component: Main,
+			component: () => import('@/view/main'),
 		},
 	],
 });

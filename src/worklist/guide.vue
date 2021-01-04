@@ -2,47 +2,12 @@
 	<div id="devWrap">
 		<h1>프로젝트명</h1>
 		<ul id="gnb">
-			<li class="on"><router-link to="/">작업목록</router-link></li>
-			<li><router-link to="/guide">가이드</router-link></li>
+			<li><router-link to="/">작업목록</router-link></li>
+			<li class="on"><router-link to="/guide">가이드</router-link></li>
 			<li><router-link to="/rules">작업규칙</router-link></li>
 		</ul>
-		<h2>작업목록</h2>
-		<h3 id="M0">작업공정률</h3>
-		<table summary="" cellspacing="0" border="0" class="htmlProcess tbl-type1">
-			<caption>
-				작업공정률
-			</caption>
-			<colgroup>
-				<col width="60" />
-				<col span="4" width="12%" />
-				<col width="*" />
-			</colgroup>
-			<thead>
-				<tr>
-					<th>구분</th>
-					<th>파일수</th>
-					<th>완료</th>
-					<th>대기</th>
-					<th>작업률(%)</th>
-					<th>기타</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td></td>
-					<td class="total_files">{{ tableItems.length }}</td>
-					<td class="final_files">{{ final_files }}</td>
-					<td class="waiting_files">{{ waiting_files }}</td>
-					<td class="html_percent">{{ html_percent }}%</td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-		<h3 id="M1">개발목록</h3>
-		<table
-			summary="퍼블리싱 작업목록을 파일명과 완료일자로 보여주는 표"
-			class="tbl-type1 sorttable"
-		>
+		<h2>가이드</h2>
+		<table summary="퍼블리싱 가이드" class="tbl-type1 sorttable">
 			<caption>
 				작업목록
 			</caption>
@@ -148,7 +113,6 @@
     }
   ]
 }, */
-// import './scss/style.scss';
 export default {
 	name: 'worklist',
 	data() {
@@ -157,42 +121,19 @@ export default {
 			modHistory: [],
 			tableItems: [
 				{
-					kind: '',
-					dep1: '',
+					kind: '컨텐츠',
+					dep1: '기본정의',
 					dep2: '',
 					dep3: '',
-					file: 'main',
+					file: '/guide/basic',
 					worker: '김인혜',
 					workDate: '2014-11-27',
 					comment: '',
 					modDate: '',
 					history: [],
 				},
-				{
-					kind: '',
-					dep1: '',
-					dep2: '',
-					dep3: '',
-					file: 'main',
-					worker: '김인혜',
-					workDate: '',
-					comment: '',
-					modDate: '',
-					history: [],
-				},
 			],
 		};
-	},
-	computed: {
-		final_files() {
-			return this.tableItems.filter(item => item.workDate !== '').length;
-		},
-		waiting_files() {
-			return this.tableItems.length - this.final_files;
-		},
-		html_percent() {
-			return (this.final_files / this.tableItems.length) * 100;
-		},
 	},
 	methods: {
 		openModHistoryPop(history) {
