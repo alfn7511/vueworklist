@@ -166,7 +166,12 @@ export default {
 					workDate: '2014-11-27',
 					comment: '',
 					modDate: '',
-					history: [],
+					history: [
+						{
+							date: '2014-11-17',
+							cont: '가입안내, 회원종류선택, 약관동의 한페이지로 UI구성',
+						},
+					],
 				},
 				{
 					kind: '',
